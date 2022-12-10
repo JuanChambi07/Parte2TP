@@ -118,29 +118,35 @@ public class Llave extends EtapaMundial {
     public String Final() {
         calcular = new Resultado();
         System.out.println(String.format("%s", "FINALLL:"));
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i < 2; i++) {
             switch (i) {
                 case 1:
-                    System.out.println(String.format("%s %s %s", this.semis.get(0).getEquipof(), "-", this.semis.get(1).getEquipof()));
+                    System.out.println(String.format("%s %s %s", this.finales.get(0).getEquipof(), "-", this.finales.get(1).getEquipof()));
                     calcular.ganoLocal();
                     if (calcular.decision) {
-                        System.out.println(String.format("%s %s " ,"gano este equipo", this.semis.get(0).getEquipof() ));
-                        this.addFinal(new Equipo(semis.get(0).getEquipof()));
+                        System.out.println(String.format("%s %s " ,"gano este equipo:", this.finales.get(0).getEquipof()));
+                        this.addFinalistas(new Equipo(finales.get(0).getEquipof()));
+                        this.addFinalistas(new Equipo(finales.get(1).getEquipof()));
+                        System.out.println(String.format("%s %s %s %s" ,"Ganador del Mundial:", this.finalistas.get(0).getEquipof(),"Segundo lugar:",this.finalistas.get(1).getEquipof()));
                     } else {
-                        System.out.println(String.format("%s %s " ,"gano este equipo", this.semis.get(1).getEquipof() ));
-                        this.addFinal(new Equipo(semis.get(1).getEquipof()));
+                        System.out.println(String.format("%s %s " ,"gano este equipo", this.finales.get(1).getEquipof()));
+                        this.addFinalistas(new Equipo(finales.get(1).getEquipof()));
+                        this.addFinalistas(new Equipo(finales.get(0).getEquipof()));
+                        System.out.println(String.format("%s %s %s %s" ,"Ganador del Mundial: ", this.finalistas.get(0).getEquipof(),"Segundo lugar:",this.finalistas.get(1).getEquipof()));
+
                     }
                     break;
-                
+
 
             }
         }
-        return "";
+        return "Fin";
     }
     public String todo(Grupo g){
         this.comprobarEquipos(g);
         this.cuartos();
         this.semifinales();
+        this.Final();
         return "";
     }
     public ArrayList<Equipo> getSemis() {
